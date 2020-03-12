@@ -7,10 +7,6 @@
 \usepackage{physics}
 \usepackage{amsthm}
 \usepackage{float}
-\usepackage{graphicx}
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{color}   %May be necessary if you want to color links
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true, %set true if you want colored links
@@ -18,62 +14,22 @@
     linkcolor=blue,  %choose some color if you want links to stand out
 }
 \usepackage{only_items}
-\usetikzlibrary{matrix}
-\usetikzlibrary{positioning}
 \voffset=-3cm
 \hoffset=-2.25cm
 \textheight=24cm
 \textwidth=17.25cm
 
-\theoremstyle{plain}
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}{Corollary}
-\newtheorem{lemma}{Lemma}
-\newtheorem{proposition}{Proposition}
-\newtheorem*{surfacecor}{Corollary 1}
-\newtheorem{conjecture}{Conjecture}
-\newtheorem{remark}{Remark} 
-\newtheorem{question}{Question} 
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}
 \setcounter{secnumdepth}{0}
-\newtheorem{example}{Example}
 
-\newcommand\m[1]{\begin{bmatrix}#1\end{bmatrix}} 
-\newcommand{\mylim}[2]{\lim_{#1 \to #2}}
-\newcommand{\Lim}[1]{\lim\limits_{#1}}
-\newcommand{\mysum}[0]{\sum_{n=1}^{\infty}}
-\newcommand{\mynsum}[1]{\sum\limits_{#1 \in \mathbb{N}}}
 \newcommand{\DocTitle}{Qualifying Exam Problems} % Document title
-\DeclareMathOperator{\lcm}{lcm}
 \DeclareMathOperator{\Aut}{Aut}
-\DeclareMathOperator{\Ima}{Im}
-\ExplSyntaxOn
-\NewDocumentCommand{\cycle}{ O{\;} m }
- {
-  (
-  \alec_cycle:nn { #1 } { #2 }
-  )
- }
-
-\seq_new:N \l_alec_cycle_seq
-\cs_new_protected:Npn \alec_cycle:nn #1 #2
- {
-  \seq_set_split:Nnn \l_alec_cycle_seq { , } { #2 }
-  \seq_use:Nn \l_alec_cycle_seq { #1 }
- }
-\ExplSyntaxOff
 
 \begin{document}
 \begin{center}
-{\bf \Large \DocTitle} %Replace N with the appropriate number
+{\bf \Large \DocTitle}
 \vspace{0.2cm}
 \hrule 
 \end{center}
-
-% TAG LIST
-% entire
-% misc
 
 \newcommand{\mylist}{
 
@@ -816,7 +772,7 @@ Find a real valued function $u(z)$ that is continuous in the closed disc $\overl
 \item[id=zeros, id=F15,tag=F15.6.]
 Consider a non-constant polynomial
 \[
-	P(z) = a_n z^n + a_{n-1} z^{n-1} + \ldots + a_1 z + a_, \; n \ge 1, \; a_0, a_n \ne 0
+	P(z) = a_n z^n + a_{n-1} z^{n-1} + \ldots + a_1 z + a_0, \; n \ge 1, \; a_0, a_n \ne 0
 \]
 and set $B = \max_{0 \le j \le n - 1} | a_j |$, $C = \max_{1 \le j \le n} | a_j |$. Prove that all roots of the polynomial $P$ lie inside the annulus $r \le | z | \le R$, where
 \[
