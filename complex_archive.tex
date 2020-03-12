@@ -1,0 +1,1289 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{amssymb,amsfonts,color,graphicx}
+\usepackage{tikz} %This package offers the ability to draw pictures
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{physics}
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{color}   %May be necessary if you want to color links
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true, %set true if you want colored links
+    linktoc=all,     %set to all if you want both sections and subsections linked
+    linkcolor=blue,  %choose some color if you want links to stand out
+}
+\usepackage{only_items}
+\usetikzlibrary{matrix}
+\usetikzlibrary{positioning}
+\voffset=-3cm
+\hoffset=-2.25cm
+\textheight=24cm
+\textwidth=17.25cm
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem*{surfacecor}{Corollary 1}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{remark}{Remark} 
+\newtheorem{question}{Question} 
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\setcounter{secnumdepth}{0}
+\newtheorem{example}{Example}
+
+\newcommand\m[1]{\begin{bmatrix}#1\end{bmatrix}} 
+\newcommand{\mylim}[2]{\lim_{#1 \to #2}}
+\newcommand{\Lim}[1]{\lim\limits_{#1}}
+\newcommand{\mysum}[0]{\sum_{n=1}^{\infty}}
+\newcommand{\mynsum}[1]{\sum\limits_{#1 \in \mathbb{N}}}
+\newcommand{\DocTitle}{Qualifying Exam Problems} % Document title
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Ima}{Im}
+\ExplSyntaxOn
+\NewDocumentCommand{\cycle}{ O{\;} m }
+ {
+  (
+  \alec_cycle:nn { #1 } { #2 }
+  )
+ }
+
+\seq_new:N \l_alec_cycle_seq
+\cs_new_protected:Npn \alec_cycle:nn #1 #2
+ {
+  \seq_set_split:Nnn \l_alec_cycle_seq { , } { #2 }
+  \seq_use:Nn \l_alec_cycle_seq { #1 }
+ }
+\ExplSyntaxOff
+
+\begin{document}
+\begin{center}
+{\bf \Large \DocTitle} %Replace N with the appropriate number
+\vspace{0.2cm}
+\hrule 
+\end{center}
+
+% TAG LIST
+% entire
+% misc
+
+\newcommand{\mylist}{
+
+% Spring 2006
+
+	\item[id=entire, id=S06,tag=S06.1.]
+
+Prove or disprove that there exists an analytic function $f(z)$ in the unit disk $D(0,1)$ such that
+\[
+	f(\frac{1}{n}) = f(-\frac{1}{n}) = \frac{1}{n^3}, \quad \text{ for all } n = 1,2,3\ldots
+\]
+
+	\item[id=entire, id=S06,tag=S06.2.]
+
+Complete the following problems:
+\begin{enumerate}[label=(\alph*)]\onlyitems
+\item State the Liouville's Theorem.
+\item Prove the Liouville's Theorem by calculating the following integral:
+\[
+	\int_{| z | = R} \frac{f(z)}{(z - a)(z - b)} dz
+\]
+\end{enumerate}
+
+\item[id=misc, id=S06,tag=S06.3.]
+The Bernoulli polynomials $\varphi_n(z)$ are defined by the expansion
+\[
+	\frac{e^{tz} - 1}{e^t -1} = \sum_{n=1}^{\infty} \frac{\varphi_n(z)}{n!} t^{n-1}
+\]
+Prove the following two statements
+\begin{description}\onlyitems
+	\item[(i)] $\varphi_n(z+1) - \varphi_n(z) = nz^{n-1}$
+	\item[(ii)] $\frac{\varphi_{n+1}(n+1)}{n+1} = 1 + 2^n + 3^n + \ldots + n^n$ 
+\end{description}
+
+\item[id=misc, id=S06,tag=S06.4.]
+
+Let $f(z)$ be analytic and satisfy $| f(z) | \le 100 | z |^{-2}$ in the strip $\alpha_1 \le \Re z \le \alpha_2.$ Prove the function
+\[
+	h(x) = \int_{-\infty}^{\infty} f(x+iy) dy
+\]
+is a constant function of $x \in [\alpha_1, \alpha_2]$.
+
+\item[id=integral, id=S06,tag=S06.5.]
+
+Evaluate the integral:
+\[
+	\int_{0}^{\infty} \frac{\sin^2 x}{x^2} dx
+\]
+
+\item[id=sequence, id=S06,tag=S06.6.]
+
+Prove or disprove that there is a sequence of analytic polynomials $\{p_n(z)\}_{n=1}^{\infty}$ so that $p_n(z) \rightarrow \overline{z}^4$ as $n\rightarrow \infty$ uniformly for $z \in \partial D(0,1) = \{z \in \mathbb{C} \colon | z | = 1\}$.
+
+\item[id=misc, id=S06,tag=S06.7.]
+
+Let $f$ be analytic in the unit disc $D(0,1)$ and continuous on $\overline{D}(0,1)$. Assume that
+\[
+	| f(z) | = | e^z | \text{ for all } z \in \partial D(0,1) = \{z \in \mathbb{C} \colon | z | = 1\}
+\]
+Find all such $f$.
+
+\item[id=entire, id=S06,tag=S06.8.]
+
+Let $f(z)$ be an entire analytic function and satisfy
+\[
+	f(z+1) = f(z) \text{ and } | f(z) | \le e^{| z |}, z \in \mathbb{C}
+\]
+Prove that $f(z)$ must be constant. Her $\mathbb{C}$ denotes the whole complex plane.
+
+
+%%%%%%%%%%%%%%% Fall 2006 %%%%%%%%%%%%%%%%%%%%%%%%
+
+\item[id=meromorphic, id=F06,tag=F06.1.]
+
+Show that $\sum_{n=1}^{\infty} \frac{1}{z^2 + n^2}$ is a meromorphic function on $\mathbb{C}$.
+
+\item[id=integral, id=F06,tag=F06.2.]
+
+Show that for $a > 0$,
+\[
+	\int_{0}^{\infty} \frac{\cos ax}{(1+x^2)^2} dx = \frac{\pi(1+a)}{4e^a}
+\]
+
+\item[id=misc, id=F06, id=F12, tag=F06.3.]
+
+(Also F12.3) Let $P(z)$ be a polynomial in $z$. Assume that $P(z) \ne 0$ for $\Re(z) > 0$. Show that $P'(z) \ne 0$ for $\Re(z) > 0$.
+
+\item[id=misc, id=F06,tag=F06.4.]
+
+(Also F10.1) Let $z_1,\ldots, z_n$ be distinct complex numbers contained in the disk $D(0,R)$. Let $f$ be analytic in the closed disk $\overline{D}(0,R)$. Let
+\[
+	Q(z) = (z - z_1)\ldots (z - z_n)
+\]
+Prove that
+\[
+	P(z) = \frac{1}{2 \pi i} \int_{| \zeta | = R} f(\zeta) \frac{1 - \frac{Q(z)}{Q(\zeta)}}{\zeta - z} d\zeta
+\]
+is a polynomial of degree $n - 1$ having the same values as $f$ at the points $z_1,\ldots, z_n$.
+
+\item[id=bound, id=F06,tag=F06.5.]
+
+Let $f$ be a function analytic in the unit disc $D(0,1)$ and $| f(z) - z | \le 1$ on the unit circle $\partial D(0,1)$. Show that $\left| f'(\frac{1}{2}) \right| \le 7/3$.
+
+\item[id=zeros, id=F06,tag=F06.6.]
+
+Let real $a > 1$. Prove that $ze^{a-z} = 1$ has a single solution in the closed unit disk $\overline{D}(0,1)$ which is real and positive.
+
+\item[id=normal, id=F06,tag=F06.7.]
+
+Let $\Omega$ be a bounded domain in $\mathbb{C}$, let $\{f_j\}_{j=1}^{\infty}$ be a sequence of analytic functions on $\Omega$ such that
+\[
+	\int_{\Omega} | f_j(z) |^2 dA(z) \le 1
+\]
+Prove that $\{f_j\}_{j=1}^{\infty}$ is a normal family in $\Omega$.
+
+\item[id=zeros, id=F06,tag=F06.8.]
+
+Let $f : D(0,1) \rightarrow \mathbb{C}$ be a bounded analytic function. Let $a_n$ be the non-zero zeros of $f$ in $D$ counting according to multiplicity. Prove
+\[
+	\sum_{n=1}^{\infty} (1 - | a_n |) < \infty
+\]
+
+%%%%%%%%%%%%%%%% FALL 2007 %%%%%%%%%%%%%%%%
+\item[id=integral, id=F07,tag=F07.1.]
+Prove the following Jordan's lemma. Let $f(z)$ be continuous in the region $D = \{z \in \mathbb{C} \colon | z | \ge R_0, \Im z \ge 0 \}$ and $\lim_{z\rightarrow \infty} f(z) = 0$ uniformly on $D$. Then for any positive number $a$
+\[
+	\lim_{R\rightarrow \infty} \int_{\Gamma_R} e^{iaz} f(z) dz = 0
+\]
+where $\Gamma_R$ is the arc of the circle $\{z \in \mathbb{C} \colon | z | = R\}$, which lies in the semiplane $\Im z \ge 0$.
+
+\item[id=integral, id=F07,tag=F07.2.]
+Let $f(z)$ be holomorphic in the closed unti disc $\overline{D(0,1)}$. Prove
+\[
+	f(z) = \frac{1}{\pi} \int_{D(0,1)} \frac{f(w)}{(1-z\overline{w})^2} dA(w), \; z \in D(0,1)
+\]
+
+\item[id=series, id=F07, id=F09, id=S16.3, tag=F07.3.] (Also F09.1, S16.3)
+Let $\alpha, \beta,$ and $\gamma$ be positive real numbers. Then find the radius of convergence for the series
+\[
+	\sum_{n=0}^{\infty} \frac{\alpha(\alpha + 1)\ldots(\alpha + n - 1)\beta(\beta + 1)\ldots(\beta + n -1)}{n!\gamma(\gamma+1)\ldots(\gamma + n - 1)} z^n
+\]
+
+\item[id=integral, id=F07,tag=F07.4.]
+Show that
+\[
+	F(z) = \int_{0}^{1} \frac{e^{tz}}{1+t} dt
+\]
+is holomorphic in $\mathbb{C}$.
+
+\item[id=misc, id=F07,tag=F07.5.]
+Let $f : D(0,1) \rightarrow D(0,1)$ be holomorphic. Prove
+\[
+	\left| \frac{| f(z) - f(w) |}{1 - f(z)\overline{f(w)}} \right| \le \left| \frac{z-w}{1-z\overline{w}} \right|, \qquad z, w \in D(0,1)
+\]
+
+\item[id=automorphism, id=F07,tag=F07.6.]
+Let $\Omega \ne \mathbb{C}$ be a simply connected domain in $\mathbb{C}$. Let $f : \Omega \rightarrow \Omega$ be a holomorphic mapping which fixes two distinct points in $\Omega$ (i.e there are $p,q \in \Omega$ so that $f(p) = p$ and $f(q) = q$). Show that $f(z) \equiv z$ on $\Omega$.
+
+\item[id=integral, id=F07,tag=F07.7.]
+Let $a$ be a real number, evaluate the following integral
+\[
+	\int_{0}^{\infty} \frac{\sin(ax)}{\sinh x} dx
+\]
+
+\item[id=integral, id=F07,tag=F07.8.]
+Let $f(z)$ be analytic on $\mathbb{C} \setminus \{1\}$ and have a simple pole at $z = 1$ with residue $\lambda$. Prove that for every $R > 0$,
+\[
+	\lim_{n\rightarrow+\infty} R^n \left| (-1)^n\frac{f^{(n)}(2)}{n!} - \lambda \right| = 0
+\]
+
+\item[id=zeros, id=F07,tag=F07.9.]
+Suppose that $f(z)$ is an entire function such that
+\[
+	| f(z) | \le B e^{A| z |}, \qquad z \in \mathbb{C}
+\]
+for some positive numbers $A, B$. Let $\omega_1, \omega_2,\ldots$ be the zeros of $f$ listed with appropriate multiplicity. Prove that
+\[
+	\sum_{n=1}^{\infty}(1+ | \omega_n |)^{-\alpha} < \infty
+\]
+for all $\alpha > 1$.
+
+%%%%%%%%%%%%%%%%% SPRING 2008 %%%%%%%%%%%%%%%%%%%
+
+\item[id=conformal, id=S08,tag=S08.1.]
+Find explicitly a conformal mapping of the domain
+\[
+	\{z \in \mathbb{C} \mid | z | > 1, \text{ Re }z > 0, \text{Im } z > 0 \}
+\]
+to the unit disc.
+
+\item[id=entire, id=S08,tag=S08.2.]
+Let $f(z)$ be an entire holomorphic function on $\mathbb{C}$ such that $| f(z) | \le | \cos z |$. Prove $f(z) = c \cos z$ for some constant $c$.
+
+\item[id=holomorphic, id=S08,tag=S08.3.]
+(Also F11.4) Show that there is a holomorphic function defined in the set
+\[
+	\Omega = \{z \in \mathbb{C} \mid | z | > 4\}
+\]
+whose derivative is
+\[
+	\frac{z}{(z-1)(z-2)(z-3)}.
+\]
+Is there a holomorphic function on $\Omega$ whose derivative is
+\[
+	\frac{z^2}{(z-1)(z-2)(z-3)}?
+\]
+\item[id=automorphism, id=S08,tag=S08.4.]
+Denote by $D$ the unit disk, $D = \{z \in \mathbb{C} \mid | z | < 1\}$. Does there exist a holomorphic function $f : D \rightarrow D$ with $f(\frac{1}{2}) = \frac{3}{4}$ and $f'(\frac{1}{2}) = \frac{2}{3}$?
+
+
+\item[id=integral, id=S08,tag=S08.5.]
+Evaluate the improper integral
+\[
+	\int_{-\infty}^{+\infty} \frac{x^2 \sin(\pi x)}{x^3 - 1} dx
+\]
+
+\item[id=normal, id=product, id=S08,tag=S08.6.]
+Prove that the product $\prod_{k=1}^{\infty}\left(\frac{z^n}{n!} + \exp(\frac{z}{2^n}) \right)$ converges uniformly on compact sets to an entire function.
+
+\item[id=normal, id=S08,tag=S08.7.]
+Let $F$ be a family of holomorphic functions on the unit disc $D(0,1)$ such that each $f \in F$ satisfying
+\[
+	| f(0) |^2 + \int_{D(0,1)} | f'(z) |^2 dA(z) \le 1
+\]
+Prove that $F$ is a normal family on $D(0,1)$.
+
+\item[id=holomorphic, id=S08,tag=S08.8.]
+Let $F$ be holomorphic on the upper half plane $U$ and continuous on $U \cup [0,1]$. Assume that
+\[
+	f(x) = x^2 - x + 1, \; x \in (0,1)
+\]
+Find all such functions $f$.
+
+\item[id=integral, id=S08,tag=S08.9.]
+Show that there is no holomorphic function $f(z)$ on $\{z \in \mathbb{C} \mid 1 < | z | < 3\}$ satisfying
+\[
+	\left| \frac{f(z)^2}{z} - 1 \right| < 1
+\]
+
+%%%%%%%%%%%%%%%%%% FALL 2008 %%%%%%%%%%%%%%%%%%%
+
+\item[id=misc, id=F08,tag=F08.1.]
+Compute the area of the image of the unit disc $D = \{z \mid | z | < 1\}$ under the map $f(z) = z + \frac{z^2}{2}$.
+\item[id=entire, id=F08,tag=F08.2.]
+Find all entire functions $f(z)$ that satisfy
+\[
+	f''\left(\frac{1}{n}\right) = 4f\left(\frac{1}{n}\right) \; \text{ for all } n \in \mathbb{N}
+\]
+
+\item[id=entire, id=F08,tag=F08.3.]
+Let $L \subset \mathbb{C}$ be the line $L = \{z = x + iy \mid x = y\}$. Assume that $f : \mathbb{C} \rightarrow \mathbb{C}$ is an entire function such that for any $z \in L$ we have $f(z) \in L$. Assume that $f(1) = 0$. Prove that $f(i) = 0$.
+
+\item[id=series, id=F08,tag=F08.4.]
+Find the largest disk centered at 1 in which the Taylor series for
+\[
+	\frac{1}{1+z^2} = \sum a_k(z-1)^k
+\]
+will converge. (Hint: You do not actually have to find the coefficients $a_k$ nor the full series to answer this question).
+
+\item[id=integral, id=F08,tag=F08.5.]
+Evaluate the integral
+\[
+	\int_{0}^{+\infty} \left(\frac{\sin x}{x}\right)^2 dx
+\]
+
+\item[id=zeros, id=F08,tag=F08.6.]
+Suppose a function $f : D \rightarrow D$, where $D = \{| z | < 1\}$ is the unit disc, is holomorphic and $f(0) = \alpha \ne 0$. Show that $f$ can't have a zero in the open disk $D(0,| \alpha |) = \{| z | < | \alpha |\}$.
+
+\item[id=harmonic, id=F08,tag=F08.7.]
+Let $u$ be a harmonic function on $\mathbb{R}^2$ that does not take zero value (i.e $u(x) \ne 0 \; \forall \, x \in \mathbb{R}^2$). Show that $u$ is constant.
+
+\item[id=zeros, id=F08,tag=F08.8.]
+How many zeros does the function $f(z) = 14z^{100} - 5 e^z$ have in the unit disc? What are the multiplicities of zeros?
+
+%%%%%%%%%%%%%%% SPRING 2009 %%%%%%%%%%%%%%%%%%%%
+
+\item[id=zeros, id=S09,tag=S09.1.]
+\begin{enumerate}[label=(\alph*)]\onlyitems
+\item State the Rouche's Theorem.
+\item Let $a > e$ be a real number. Prove that the equation
+\[
+	a z^4 e^{-z} = 1
+\]
+has a single solution in $D(0,1)$, which is real and positive.
+\end{enumerate}
+
+\item[id=entire, id=S09,tag=S09.2.]
+Suppose that a function $f(z)$ is holomorphic in the unit disc $D(0,1)$ and has the property
+\[
+	f\left(\frac{1}{2n}\right) = f^{(4)}\left(\frac{1}{2n}\right) \; \text{ for all } \; n \in \mathbb{N}
+\]
+Prove that $f$ can be extended to an entire function on $\mathbb{C}$. (Here $f^{(4)} = \pdv[4]{f}{z}$).
+
+\item[id=integral, id=S09,tag=S09.3.]
+If $f(z)$ is continuous in the region $\text{ Re } z \ge \sigma$ ($\sigma$ is a fixed real number) and $\lim_{z\rightarrow\infty} f(z) = 0$, then for any negative number $t$
+\[
+	\lim_{R\rightarrow\infty}\int_{\Gamma_R}e^{tz} f(z) dz = 0,
+\]
+where $\Gamma_R$ is the arc of the circle $| z | = R$, $\text{ Re } z \ge \sigma$.
+
+\item[id=conformal, id=S09,tag=S09.4.]
+\begin{enumerate}[label=(\alph*)]\onlyitems
+\item State the Riemann mapping theorem.
+\item Find explicitly a conformal mapping of the domain
+\[
+	\{z \in \mathbb{C} \mid | z | < 1, \text{ Re } z > 0, \text{ Im } z > 0 \}
+\]
+to the unit disc.
+\end{enumerate}
+
+5. (this question is weird, ok). Does there exist a conformal automorphism $\varphi$ of the unit disc such that $\varphi(1/2) = 0$ and $\varphi(0) = \frac{i}{3}$?
+
+1. Find the integral $\int_{0}^{\infty} \frac{x \cos(ax)}{\sinh x} dx$.
+
+3. Prove that if $| a | \ne R$, then
+\[
+	\int_{| z | = R} \frac{| dz |}{| z-a || z+a |} \le \frac{2 \pi R}{\left| R^2 - | a |^2 \right|}
+\]
+
+
+
+\item[id=integral, id=S09,tag=S09.5.]
+Let $0 < a < 1$ be any real number. Then
+\begin{enumerate}[label=(\alph*)]\onlyitems
+\item Prove the following identity:
+\[
+	\int_{0}^{2\pi} \frac{1}{1 + a^2 - 2a \cos \theta} d\theta = \frac{2\pi}{1-a^2}
+\]
+\item Find the limit
+\[
+	\lim_{k\rightarrow+\infty} \int_{| z | = (k + \frac{1}{2})\pi} \frac{\pi}{z^2 \sin z} dz
+\]
+\end{enumerate}
+
+
+\item[id=entire, id=S09,tag=S09.6.]
+Let $f(z)$ be any non-constant entire function on $\mathbb{C}$. Use Liouville's Theorem to prove that the image of $f$ (or $f(\mathbb{C})$) is dense in $\mathbb{C}$.
+
+4. (blame spring 09 formatting, not me).
+\begin{enumerate}[label=(\alph*)]\onlyitems
+\item State the Schwarz reflection principle for holomorphic function on the unit disk.
+\item Let $f(z)$ be holomorphic in the unit disc $D(0,1)$ and continuous on the closed disc $\overline{D(0,1)}$. Prove or disprove there exists such $f$ so that $fe^{i\theta} = e^{-i\theta}$ for $0 < \theta < \pi/4$.
+\end{enumerate}
+
+\item[id=bound, id=S09,tag=S09.7.]
+Let $D$ be a bounded domain in $\mathbb{C}$ with $0 \in D$. If $f : D \rightarrow D$ is a holomorphic map so that $f(0) = 0$ and $f'(0) = 1$. Show that $f(z) = z$ on $D$.
+
+\item[id=harmonic, id=S09,tag=S09.8.]
+Let $f(z)$ be holomorphic on a domain in the complex plane. If $| f(z) |^2$ is harmonic in $D$. What can you conclude on $f$? (Show your work.)
+
+\item[id=entire, id=S09,tag=S09.9.]
+Let $f$ be an entire function on $\mathbb{C}$ with $| f(z) | = 1$ for $| z | = 1$ and $f'''(0) = 6$ (the third order derivative of $f$ at $z = 0$). Find all such $f$.
+
+%%%%%%%%%%%%%%%% FALL 2009 %%%%%%%%%%%%%%%
+\item[id=holomorphic, id=F09,tag=F09.2.]
+
+Prove or disprove there is a holomorphic function $f(z)$ on the unit disc $D(0,1)$ so that
+\[
+	\{z \in D(0,1) \colon f^{(k)}(z) = 0 \text{ for some non-negative integer $k$ } \} = (-1,1)
+\]
+where $f^{(k)}$ is the $k$'th derivative of $f$.
+
+\item[id=entire, id=F09,tag=F09.3.]
+Let $L \subset \mathbb{C}$ be the line $L = \{z = x + iy \mid y = 2\}$. Assume that $f : \mathbb{C} \rightarrow \mathbb{C}$ is an entire function such that for any $z \in L$ we have $f(z) \in L$. Assume that $f(0) = i$. Find $f(4i)$.
+
+\item[id=normal, id=F09,tag=F09.4.]
+Let $\{f_\alpha\}_{\alpha \in A}$ be a family of holomorphic functions on the unit disc $D(0,1)$ such that
+\[
+	\text{ for all } z \in D(0,1) \; \forall \, f \in \{f_\alpha\}_{\alpha \in A} \quad \text{ Im }f(z) \ne (\text{ Re } f(z))^2
+\]
+Prove that $\{f_\alpha\}_{\alpha \in A}$ is a normal family (i.e every sequence in $\{f_\alpha\}_{\alpha \in A}$ has a subsequence that converges or tends to infinity uniformly on compact subsets of $D(0,1)$).
+
+\item[id=automorphism, id=F09,tag=F09.5.]
+Let $f(z) : \mathbb{C}\setminus\{0,1\} \rightarrow \mathbb{C}\setminus\{0,1\}$ be holomorphic. Prove that $f$ must be constant.
+
+\item[id=zeros, id=F09,tag=F09.6.]
+Suppose that $f$ is a polynomial such that all of its zeros are inside the unit disc. Prove that all zeros of $f'$ are also inside of the unit disc.
+
+\item[id=integral, id=F09,tag=F09.7.]
+Find the integral
+\[
+	\int_{0}^{\infty} \frac{1-\cos(2x)}{x^2} dx
+\]
+
+\item[id=sequence, id=F09,tag=F09.8.]
+Does there exist a sequence of holomorphic functions $\{f_n(z)\}_{n=1}^{\infty}$ on the unit disc $D(0,1)$ so that $f_n(z) \rightarrow 1/z$ uniformly on $\{z \in \mathbb{C} \colon | z | = 1/2\}$ as $n\rightarrow\infty$?
+
+%%%%%%%%%%%%%%%% FALL 2010 %%%%%%%%%%%%%%%%
+\item[id=meromorphic, id=F10,tag=F10.2.]
+Show that $\sum_{n=1}^{\infty} \frac{1}{z^2 + n^2}$ is a meromorphic function on $\mathbb{C}$.
+
+\item[id=normal, id=F10,tag=F10.3.]
+Let $\mathcal{F}$ be a family of holomorphic functions on the unit disc so that for any $f \in \mathcal{F}$ one has
+\[
+	\int_D | f(z) | (1 - | z |)^2 dA(z) \le 1
+\]
+Prove $\mathcal{F}$ is a normal family.
+
+\item[id=conformal, id=F10,tag=F10.4.]
+
+Find an explicit conformal transformation of an open set $U = \{| z | > 1\} \setminus [1, + \infty)$ to the unit disc.
+
+\item[id=integral, id=F10,tag=F10.5.]
+
+Find the integral (where $a > b > 0$)
+\[
+	\int_{0}^{\infty} \frac{\cos x}{(x^2 + a^2)(x^2 + b^2)} dx
+\]
+
+\item[id=conformal, id=F10,tag=F10.6.]
+
+Let $U$ be an open subset of $\mathbb{C}$, $f : U \rightarrow \mathbb{C}$ and $z_0 \in U$. Write $f = u + iv$, i.e $u,v$ are the real and imaginary parts of $f$. We say that $f$ is complex differentiable at $z_0$ if $f'(z_0) = \lim_{z\rightarrow z_0} \frac{f(z) - f(z_0)}{z-z_0}$ exists.
+\begin{enumerate}[label=(\roman*)]\onlyitems
+\item Prove that if $f$ is complex differentiable at $z_0$, then $u,v$ satisfy the Cauchy-Riemann equations.
+\item Prove that if $f$ is complex differentiable and $f'(z) \ne 0$ in $U$ then $f$ is an orientation preserving conformal map, i.e. for any two differentiable curves $\alpha,\beta$ in $U$ with $\alpha(0) = \beta(0)$ the angle from $\alpha'(0)$ to $\beta'(0)$ is equal to the angle from $(f \circ \alpha)'(0)$ to $(f \circ \beta)'(0)$.
+\end{enumerate}
+
+\item[id=harmonic, id=F10,tag=F10.7.]
+\begin{enumerate}[label=(\roman*)]\onlyitems
+\item State the Mean Value Theorem for analytic functions and use the Cauchy integral formula to prove it.
+\item Prove that if $f = u+ iv$ is an analytic function from an open subset $U$ of $\mathbb{C}$ then the real and imaginary parts $u$ and $v$ of $f$ are harmonic, i.e, $\Delta u = \Delta v = 0$.
+\item Let $U$ be an open subset of $\mathbb{R}^2$, and $u : U \rightarrow \mathbb{R}$ a harmonic function. Prove that if there is $p_0 \in U$ such that $u(p_0) = \inf_{x \in U} u(x)$, then $u$ is a constant.
+\end{enumerate}
+
+
+\item[id=series, id=F10,tag=F10.8.]
+Let $\sum_{n=0}^{\infty} a_n z^n$ be a power series with the radius of convergence $R = 64$. Determine the region of convergence of the Laurent series
+\[
+	\sum_{n=-\infty}^{-1} a_{2| n |} z^{3n} + \sum_{n=0}^{\infty} a_{3n} z^{2n}
+\]
+
+%%%%%%%%%%%%%%%%%% FALL 2011 %%%%%%%%%%%%%%%%%%%%%%
+\item[id=entire, id=F11, id=F13, tag=F11.1.]
+(Also F13.1) Describe all entire holomorphic functions $f$ and $g$ such that
+\begin{enumerate}[label=(\alph*)]\onlyitems
+\item $f\left(\frac{1}{n}\right) = f\left(-\frac{1}{n}\right) = \frac{1}{n^2}$ for all positive integers $n$. Show your work.
+\item $g\left(\frac{1}{n}\right) = g\left(-\frac{1}{n}\right) = \frac{1}{n^3}$ for all positive integers $n$. Show your work.
+\end{enumerate}
+
+\item[id=entire, id=F11, id = F13, tag=F11.2.]
+(Also F13.2) Let $f(z)$ be an entire holomorphic function such that
+\[
+	\lim_{z\rightarrow \infty} \frac{| f(z) |}{| z |} = 0
+\]
+Prove that $f$ is a constant.
+
+\item[id=integral, id=F11,tag=F11.3.]
+Evaluate
+\[
+	\int_{0}^{\infty} \frac{dx}{x^{1/3}(1+x)}
+\]
+
+\item[id=holomorphic, id=F11,tag=F11.5.]
+Let $f : [0,1] \rightarrow \mathbb{C}$ be a continuous function. Define the function $F : \mathbb{C} \setminus [0,1] \rightarrow \mathbb{C}$ by
+\[
+	F(z) = \int_{0}^{1} \frac{f(t)}{t-z} dt, \qquad z \in \mathbb{C} \setminus [0,1].
+\]
+Prove that $F$ is holomorphic on $\mathbb{C} \setminus [0,1]$.
+
+\item[id=bound,id=misc, id=F11,tag=F11.6.]
+Prove the Schwarz-Pick lemma: Let $f : D(0,1) \rightarrow D(0,1)$ be holomorphic. Then
+\[
+	\left| \frac{f(z) - f(a)}{1 - \overline{f(a)}f(z)} \right| \le \left| \frac{z-a}{1 - \overline{a}z} \right|, \qquad a,z \in D(0,1)
+\]
+
+\item[id=misc, id=F11,tag=F11.7.]
+Let $f$ be holomorphic in $D(0,1)$ and let
+\[
+	M(r,f) = \int_{0}^{2\pi} | f(re^{i\theta}) |^2 d\theta
+\]
+Prove that $M(r,f)$ is an increasing convex function of $r$ on $[0,1)$.
+
+\item[id=singularity, id=F11,tag=F11.8.]
+Let $f$ be meromorphic in $D(0,1) \setminus \{0\}$ such that
+\[
+	\int_{D(0,1) \setminus \{0\}} | f(z) |^3 dA(z) \le 1
+\]
+Prove $z = 0$ is a removable singularity of $f$.
+
+%%%%%%%%%%%%%%%%%%% FALL 2012 %%%%%%%%%%%%%%%%%%%%%%
+
+\item[id=integral, id=F12,tag=F12.1.]
+Show that for $a > 0$,
+\[
+	\int_{0}^{\infty} \frac{\cos ax}{(1 + x^2)^2} dx = \frac{\pi(1+a)}{4 e^{a}}
+\]
+
+\item[id=holomorphic, id=normal, id=F12,tag=F12.2.]
+Suppose $f$ is analytic in an annulus $A(0,r,R) = \{z \in \mathbb{C} \colon r < | z | < R\}$, and there exists a sequence of polynomials $p_n$ converging to $f$ uniformly on compact sets of $A(0,r,R)$. Show that $f$ is an analytic function on the disc $D(0,R)$. 
+
+\item[id=zeros, id=F12,tag=F12.4.]
+Determine the number of roots, counted with multiplicity, of the equation
+\[
+	2z^5 - 6z^2 + z + 1 = 0
+\]
+in the annulus $A(0,1,2) = \{z \in \mathbb{C} \colon 1 < | z | < 2\}$.
+\item[id=bound, id=F12,tag=F12.5.]
+Let $f$ be analytic on the upper-half plane and satisfy $| f(z) | < 1$. Furthermore suppose $f(i) = 0$. Give an upper bound for $| f'(i) |$ and satisfy which functions realize this extrema.
+
+\item[id=entire, id=F12,tag=F12.6.]
+Let $f(z)$ be an entire holomorphic function on $\mathbb{C}$ such that
+\[
+	| f(e^{z}) | \le | e^z |, \qquad z \in \mathbb{C}
+\]
+Prove $f(z) \equiv az$ for some constant $| a | \le 1$.
+\item[id=singularity, id=F12,tag=F12.7.]
+Let $f$ be holomorphic in $D(0,1) \setminus \{0\} = \{z \in \mathbb{C} \colon 0 < | z | < 1\}$. If
+\[
+	\int_{D} | f(z) |^3 dA(z) = \int_{D} | f(x+iy) |^3 dx dy < \infty
+\]
+then $z = 0$ is removable singularity of $f$.
+\item[id=series, id=F12,tag=F12.8.]
+Find the largest set in $\mathbb{C}$ where the Laurent series
+\[
+	\sum_{j=-\infty}^{\infty} 2^j z^{j^3}
+\]
+converges.
+\item[id=harmonic, id=F12,tag=F12.9.]
+Let $u$ be a real-valued harmonic function in $\mathbb{C} \setminus \{0\}$. Show that then
+\[
+	u(z) = c \log | z | + \Re (f(z))
+\]
+for some real constant $c$ and a holomorphic function $f$ on $\mathbb{C} \setminus \{0\}$.
+
+%%%%%%%%%%%%%%%%%%% SPRING 2013 %%%%%%%%%%%%%%%%
+
+
+\item[id=series, id=S13,tag=S13.1.]
+Find the largest set $D$ where the power series
+\[
+	\sum_{n=1}^{\infty} \frac{n}{2^n} z^{n^2}
+\]
+\item[id=normal, id=S13,tag=S13.2.]
+Let $\{f_j\}$ be a sequence of holomorphic functions from $D(0,1)$ to $D(0,1) \setminus \{0\}$. Prove that if $\sum_{j=1}^{\infty} | f_j(0) |$ converges, then $\sum_{j=1}^{\infty} f_j(z)^2$ converges absolutely and uniformly on compact sets in $D(0,1/3)$.
+
+\item[id=bound, id=S13,tag=S13.3.]
+Suppose $f$ is holomorphic on the upper half plane $\mathbb{H} = \{\Im z > 0\},$ $f(i) = 0$, and $| f(z) | \le 1$ for all $z \in \mathbb{H}$. Prove that $| f(2i) | \le \frac{1}{3}$/
+
+\item[id=holomorphic, id=S13, id=S18, tag=S13.4.]
+(Also S18.4) Suppose $f(z) = u(x,y) + iv(y)$ is a holomorphic function. Show that there exists $a \in \mathbb{R}$ and $\lambda \in \mathbb{C}$ such that $f(z) = az + \lambda$.
+
+\item[id=zeros, id=S13,tag=S13.5.]
+Determine the number of roots, counted with multiplicity, of the equation
+\[
+	2z^5 - 6z^2 + z + 1 =0
+\]
+inside the annulus $1 \le | z | \le 2$.
+
+\item[id=normal, id=S13, id=S15, tag=S13.6.]
+(Also S15.8) Suppose $f$ is analytic in an annulus $r < | z | < R$, and there exists a sequence of polynomials $p_n$ converging to $f$ uniformly on any compact subset of the annulus. Show that $f$ is an analytic function on the disc $\{| z | < R\}$.
+\item[id=integral, id=S13,tag=S13.7.]
+Evaluate the integral for $a > 0$
+\[
+	\int_{-\infty}^{\infty} \frac{\cos^3x}{a^2 + x^2} dx
+\]
+\item[id=conformal, id=S13,tag=S13.8.]
+Find explicitly a conformal mapping of the domain
+\[
+	U = \{| z | < 1, z \notin [1,2,1) \} = \mathbb{D} \setminus [1/2,1)
+\]
+to the unit disc $\mathbb{D} = \{| z | < 1\}.$
+
+%%%%%%%%%%%%% FALL 2013 %%%%%%%%%%%%%%%%%%%%%
+
+\item[id=automorphism, id=F13,tag=F13.3.]
+Describe explicitly the automorphism group $\Aut(\mathbb{C} \setminus \{0,1\})$.
+\item[id=integral, id=F13,tag=F13.4.]
+Evaluate the integral
+\[
+	\int_{0}^{\infty} \frac{1}{1+x^5} dx
+\]
+\item[id=harmonic, id=F13,tag=F13.5.]
+Prove that the function
+\[
+	u(x,y) = y \cos y \sinh x + x \sin y \cosh x
+\]
+is harmonic in $\mathbb{R}^2$ and find its harmonic conjugate.
+\item[id=zeros, id=F13,tag=F13.6.]
+How many solutions has the equation
+\[
+	z^4 + 3z^2 + z + 1 = 0
+\]
+in the closed upper half unit disc?
+
+\item[id=singularity, id=F13,tag=F13.7.]
+Assume that $z = 0$ is an essential singularity of a holomorphic function $f$. Show that it is also an essential singularity of $f^2, f^3$, and, in fact, of $f^n$ for every $n \in \mathbb{N}$.
+
+\item[id=misc, id=F13,tag=F13.8.]
+Suppose $f$ is holomorphic on $\mathbb{C} \setminus \{0\}$ and suppose that $f\left(\frac{1}{z}\right) = f(z)$ for all $z \in \mathbb{C} \setminus \{0\}$. Suppose further that $f$ is real on the unit circle. Show that $f$ is real for all real $z \ne 0$.
+
+%%%%%%%%%%%%%% SPRING 2014 %%%%%%%%%%%%%%%%%
+
+\item[id=entire, id=S14,tag=S14.1.]
+Complete the following two problems.
+\begin{enumerate}[label=(\alph*)]\onlyitems
+\item Describe all entire holomorphic functions $f$ with $| f(z) | \le | z |$ for all $z \in \mathbb{C}$.
+\item Describe all entire holomorphic functions $f$ with $\lim_{z\rightarrow \infty} \frac{f(z)}{z} = 0$.
+\end{enumerate}
+
+\item[id=integral, id=S14,tag=S14.2.]
+Complete the following two problems.
+\begin{enumerate}[label=(\alph*)]\onlyitems
+\item Evaluate $\int_{| z | = 1} \exp\left(\frac{1}{z^2}\right) dz$. (Here, $\exp(z) =: e^z$).
+\item Evaluate $\int_{0}^{\infty} \frac{x^2}{1+x^4} dx$.
+\end{enumerate}
+\item[id=bound, id=S14,tag=S14.3.]
+Let $f : D(0,1) \rightarrow D(0,1)$ be holomorphic with $f(0) = \frac{1}{3}$.
+\begin{enumerate}[label=(\alph*)]\onlyitems
+\item Give a sharp upper bound estimate for $| f'(0) |$.
+\item Give an example of $f$ such that $| f'(0) |$ achieves the upper bound you obtained in Part $(a)$.
+\end{enumerate}
+
+\item[id=series, id=S14,tag=S14.4.]
+Prove that there is an $N$ such that if $n \ge N$ then
+\[
+	\sum_{k=0}^{n} (k+1) z^k \ne 0, \qquad z \in D(0,3/4)
+\]
+
+\item[id=subharmonic, id=harmonic, id=S14,tag=S14.5.]
+Let $f_1,\ldots, f_n$ be holomorphic in a domain $D$ in $\mathbb{C}$ and $p \in (0,\infty)$. Prove
+\begin{enumerate}[label=(\alph*)]\onlyitems
+\item $\sum_{j=1}^{n} | f_j(z) |^p$ is subharmonic in $D$.
+\item If there is a $z_0 \in D$ such that $\sum_{j=1}^{n} | f_j(z_0) |^p \ge \sum_{j=1}^{n} | f_j(z) |^p$ for all $z \in D$, then $f_j$ is constant for $j = 1,2,\ldots, n$.
+\end{enumerate}
+
+\item[id=conformal, id=S14,tag=S14.6.]
+Let $D = \{z \in \mathbb{C} \colon 1 < | z + 1 | \text{ and } | z + 2 | < 2 \}$. Construct a conformal holomorphic map which maps $D$ onto the unit disc $D(0,1)$.
+
+\item[id=automorphism, id=S14,tag=S14.7.]
+Let $D$ be a simply connected domain in $\mathbb{C}$ and $z_0 \in D$. If $\phi_1, \phi_2 \in \Aut(D)$ such that
+\[
+	\phi_1(z_0) = \phi_2(z_0) \text{ and } \phi_1'(z_0) = \phi_2'(z_0)
+\]
+then $\phi_1 \equiv \phi_2$. (Hint: Try $D = D(0,1)$ and $D = \mathbb{C}$ first.)
+
+\item[id=singularity, id=S14,tag=S14.8.]
+Let $f(z)$ be holomorphic in $D =: D(0,1) \setminus \{0\}$ such that
+\[
+	\int_{D} | f(z) | dA(z) < \infty
+\]
+Prove that $z = 0$ is either removable or a simple pole.
+
+\item[id=sequence, id=S14,tag=S14.9.]
+
+Let $f_n : D(0,1) \rightarrow D(0,1) \setminus \{0\}$ be a sequence of holomorphic functions with $\sum_{n=1}^{\infty} | f_n(0) |^2 < \infty$. Prove that
+\[
+	\sum_{n=1}^{\infty} | f_n(z) |^3
+\]
+converges uniformly on $\overline{D(0,1/5)}.$
+
+%%%%%%%%%%%% fALL 2014 %%%%%%%%%%%%%
+
+\item[id=entire, id=F14,tag=F14.1.]
+Let $f$ be an entire holomorphic function such that $f(z) \notin \mathbb{R}$ for all $z \in \mathbb{C}$, where $\mathbb{R}$ is the real line in the complex plane $\mathbb{C}$. Prove or disprove $f$ is a constant.
+\item[id=integral, id=F14,tag=F14.2.]
+Evaluate the real integral
+\[
+	\int_{0}^{\infty} \frac{\ln x}{1 + x^4} dx
+\]
+\item[id=entire, id=F14,tag=F14.3.]
+Let $f$ be entire holomorphic such that $f(x+ix) \in \mathbb{R}$ for all $x \in \mathbb{R}$. If $f(2) = 1 - i$ then find $f(2i)$, where $i^2 = -1$.
+\item[id=series, id=F14,tag=F14.4.]
+Let $h(x)$ be a twice differentiable function on $[-1,1]$ such that $h(0) = h'(0) = 0$ and $h''(0) \ne 0$. Prove
+\[
+	\sum_{n=1}^{\infty} h\left(\frac{1}{n}\right) z^n
+\]
+defines a holomorphic function on $D(0,1)$ which is continuous on $\overline{D(0,1)}.$
+
+\item[id=zeros, id=F14,tag=F14.5.]
+Let $D$ be a bounded domain in $\mathbb{C}$ with piecewise $C^1$ boundary. Let $f(z)$ be holomorphic in a bounded domain $D$ and $f\in C(\overline{D})$ with all zeros $\{z_1,\ldots, z_n\} \subset D$ counting multiplicity. Let $g$ be holomorphic in $D$ and continuous on $\overline{D}$. Evaluate
+\[
+	\int_{\partial D} \frac{f'(z)}{f(z)} g(z) dz
+\]
+\item[id=conformal, id=F14,tag=F14.6.]
+Let $D = \{z \in \mathbb{C} \colon | z | < 1, \Re z > 0, \Im z > 0\}$. Construct a conformal holomorphic map which maps $D$ onto the unit disc $D(0,1)$.
+
+\item[id=misc, id=F14,tag=F14.7.]
+Let $D$ be a simply connected domain in $\mathbb{C}$ and $z_0 \in D$. Let $\mathcal{F}$ be the set of all $f : D \rightarrow D(0,1)$ such that
+\begin{enumerate}[label=(\roman*)]\onlyitems
+\item $f(z_0) = 0$
+\item $f'(z_0) > 0$
+\item $f$ is one to one.
+\end{enumerate}
+Then prove $\mathcal{F}$ is not empty set.
+
+\item[id=harmonic, id=F14,tag=F14.8.]
+Let $u(z)$ be harmonic in $D =: D(0,1) \setminus \{0\}$ such that
+\[
+	\lim_{z\rightarrow 0} \frac{u(z)}{\log | z |} = 0
+\]
+Prove that $u$ can be extended to be harmonic in $D(0,1)$.
+
+%%%%%%%%%%%%%% SPRING 2015 %%%%%%%%%%%%%%%%%%
+
+\item[id=misc, id=S15,tag=S15.1.]
+Prove that for each $n \in \mathbb{N}$ every solution of the equation $(1-iz)^n + z^n = 0$ must satisfy $\Im z = -\frac{1}{2}.$
+\item[id=singularity, id=S15,tag=S15.2.]
+Classify all the singularities and find the associated residues for
+\[
+	f(z) = \frac{e^{-\frac{1}{z}}}{(z-1)(z+1)^2}
+\]
+
+\item[id=misc, id=S15,tag=S15.3.]
+Expand in a series of powers each of the branches of $z(w)$ defined by the equation $w = 2z + z^2$ (for one branch $z(0) = 0$, for the other $z(0) = -2$.)
+
+\item[id=integral, id=S15,tag=S15.4.]
+Evaluate the integral
+\[
+	\int_{-\infty}^{\infty} \frac{x \sin \pi x}{x^2 + 2x + 5} dx
+\]
+
+\item[id=bound, id=S15,tag=S15.5.]
+Suppose $f : D(0,1) \rightarrow D(0,1)$ is a holomorphic mapping and $f(0) = \frac{1}{5}$. Give an upper bound for $| f'(0) |$ and characterize the functions for which the upper bound is an equality.
+
+\item[id=meromorphic, id=singularity, id=S15,tag=S15.6.]
+Let the function $f(z)$ be meromorphic in a neighbourhood of the unit disk $\{| z | \le 1\}$ and suppose it has only one singular point $z_0$ on the circle $| z | = 1$ which is a simple pole. Show that $\frac{f^{(n)}(0)}{n!} = \frac{A}{z_0^n}(1 + \phi_n)$ where $\lim_{n\rightarrow \infty} \phi_n = 0$.
+
+\item[id=harmonic, id=S15,tag=S15.7.]
+TRUE or FALSE: There exists a bounded harmonic function on the upper half plane $\mathbb{H}$ that cannot be extended to any larger domain. Explain your answer.
+
+%%%%%%%%%%%%%%%% fALL 2015 %%%%%%%%%%%%%%%%%%
+\item[id=series, id=F15,tag=F15.1.]
+Prove that the series $\sum_{n=1}^{\infty} \frac{z^n}{n^2}$ converges uniformly in the unit disc $| z | \le 1$. Does the series obtained by term-by-term differentiation converge uniformly in the unit disc? Explain your answer.
+\item[id=entire, id=F15,tag=F15.2.]
+Let $f$ be an entire function and suppose that there exists a bounded sequence $\{a_n\}$ of real numbers such that $f(a_n)$ is real for all $n \in \mathbb{N}$. Prove that $f(x)$ is real for all real $x$.
+\item[id=integral, id=F15,tag=F15.3.]
+Evaluate
+\[
+	\int_{0}^{\infty} \frac{\sin ax}{x(x^2 + b^2)} dx, \; a,b > 0
+\]
+
+\item[id=zeros, id=F15,tag=F15.4.]
+How many roots does the equation $z + e^{-z} = a$, $a \in \mathbb{R}$, $a > 1$, have in the right half plane?
+
+\item[id=harmonic, id=F15,tag=F15.5.]
+Find a real valued function $u(z)$ that is continuous in the closed disc $\overline{D(0,R)}$ (that is, closed disc centered at 0 of radius $R > 0$ ) and harmonic in $D(0,R)$, and satisfies
+\[
+	u(Re^{i\theta}) = \frac{1}{2}(1 + \cos^3\theta), \; \theta \in [0,2\pi)
+\]
+\item[id=zeros, id=F15,tag=F15.6.]
+Consider a non-constant polynomial
+\[
+	P(z) = a_n z^n + a_{n-1} z^{n-1} + \ldots + a_1 z + a_, \; n \ge 1, \; a_0, a_n \ne 0
+\]
+and set $B = \max_{0 \le j \le n - 1} | a_j |$, $C = \max_{1 \le j \le n} | a_j |$. Prove that all roots of the polynomial $P$ lie inside the annulus $r \le | z | \le R$, where
+\[
+	r = \frac{1}{1 + \frac{C}{| a_0 |}}, R = 1 + \frac{B}{| a_n |}.
+\]
+
+\item[id=normal, id=series, id=F15,tag=F15.7.]
+TRUE or FALSE: The family $\mathcal{F}$ of functions holomorphic in a unit disc with power series $f(z) = \sum_{n=0}^{8`} a_n z^n$ that satisfy $| a_n | \le n^{2015}$ is normal.
+
+\item[id=conformal, id=F15,tag=F15.8.]
+Set $U_1 = \{1 < | z | < 2\}$ and $U_2 = \{0 < | z | < 1\}$.
+\begin{enumerate}[label=(\alph*)]\onlyitems
+\item Show that homeomorphism $f : U_1 \rightarrow U_2$ given $f(re^{i\theta}) = (r-1)e^{i\theta}$ is not a conformal mapping.
+\item Does there exist a conformal mapping $g : U_1 \rightarrow U_2$?
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%% SPRING 2016 %%%%%%%%%%%%%%%%%%%
+
+\item[id=meromorphic, id=S16,tag=S16.1.]
+Show that
+\[
+	\sum_{n=1}^{\infty} \frac{1}{z^2 + n^2}
+\]
+defines a meromorphic function on $\mathbb{C}$.
+\item[id=integral, id=S16,tag=S16.2.]
+Show that for a positive integer $n \ge 1$
+\[
+	\int_{0}^{\infty} \frac{1}{x^{2n} + 1} dx = \frac{\pi}{2n \sin \frac{\pi}{2n}}
+\]
+\item[id=entire, id=S16,tag=S16.4.]
+Let $f$ be an entire function. Prove the following two statements.
+\begin{enumerate}[label=(\alph*)]\onlyitems
+\item If $| f(z) | \le M(1 + | z |^n)$ on $\mathbb{C}$ for some positive constant $M$ then $f$ is a polynomial of degree at most $n$.
+\item If $\lim_{| z | \rightarrow \infty} | f(z) | = \infty$ then $f$ is a polynomial.
+\end{enumerate}
+\item[id=entire, id=S16,tag=S16.5.]
+Find all entire holomorphic functions $f$ with justification such that
+\[
+	\Im f(z) = (y^2 - x^2),
+\]
+where $\Im f$ denotes the imaginary part of $f$.
+\item[id=normal, id=S16,tag=S16.6.]
+Prove or disprove there exists a family $\{f_n\}$ of holomorphic functions on $D(0,2)$ such that $f_n \rightarrow \overline{z}^3$ uniformly on the compact set $\{z \in \mathbb{C} \colon | z | = 1 \text{ or } 1/2 \}$ (two circles: $| z | = 1$ and $| z | = 1/2$).
+\item[id=conformal, id=S16,tag=S16.7.]
+Construct a conformal map $\phi$ which maps $D_1$ onto $D_2$, where
+\[
+	D_1 = \{z = x + iy \in D(0,1) \colon y > x \}; \text{ and } D_2 = \{z \in \mathbb{C} \colon | z | > 1\}
+\]
+\item[id=bound, id=S16,tag=S16.8.]
+Let $f : U \rightarrow U$ be holomorphic with $U$ being the upper half plane. Prove that
+\[
+	| f'(i) | \le | f(i) |
+\]
+and provide an example that indicates the above inequality is an equality.
+
+%%%%%%%%%%%%%%%%%% fALL 2016 %%%%%%%%%%%%%%%%
+
+\item[id=integral, id=F16,tag=F16.1.]
+Evaluate the following integral
+\[
+	\int_{0}^{\infty} \frac{x}{1+x^5} dx
+\]
+\item[id=misc, id=F16,tag=F16.2.]
+Suppose $f$ is analytic in the annulus $A = \{z \in \mathbb{C} \colon 1/2 < | z | < 2\}$, and there exists a sequence of polynomials $p_n$ converging to $f$ uniformly on the unit circle $| z | = 1$. Show that $f$ can be extended to be an analytic function on the disc $D(0,2)$.
+\item[id=bound, id=F16,tag=F16.3.]
+Prove or disprove that there is a non-zero holomorphic function $f$ in the complex plane $\mathbb{C}$ such that
+\[
+	| f(z) |^2 \le | \cos z |
+\]
+\item[id=meromorphic, id=F16,tag=F16.4.]
+Let $f$ be meromorphic in the complex plane $\mathbb{C}$ such that
+\[
+	| f(z) | = 1 \quad \text{ on } \quad | z | = 1
+\]
+Prove $f$ is a rational function.
+	
+\item[id=series, id=F16,tag=F16.5.]
+Find the radius of convergence for
+\[
+	\sin\left(\frac{2}{(z-2i+2)(z-3+i)}\right) = \sum_{n=0}^{\infty} a_n z^n
+\]
+\item[id=holomorphic, id=F16,tag=F16.6.]
+Prove or disprove there is a holomorphic function $f$ on $\mathbb{C} \setminus D(0,3)$ such that
+\[
+	f'(z) = \frac{z^2 + 1}{z(z-1)(z-2)}
+\]
+\item[id=bound, id=F16,tag=F16.7.]
+Let $f$ be analytic on the upper-half plane and satisfy $| f(z) | < 1$. Furthermore suppose $f(2+i) = 0$. Give an upper bound for $| f'(2+i) |$ and state which functions realize this extrema.
+\item[id=harmonic, id=F16,tag=F16.8.]
+Let $u$ be a real-valued harmonic function in $\overline{D(0,1)} \setminus \{0\}$ such that
+\[
+	\lim_{z\rightarrow 0} \frac{u(z)}{\log z} = 0.
+\]
+Show that there is a harmonic function $U$ on $D(0,1)$ such that $u(z) = U(z)$ for all $z \in D(0,1) \setminus \{0\}$.
+
+%%%%%%%%%%%%%%%% SPRING 2017 %%%%%%%%%%%%%%
+
+\item[id=integral, id=S17,tag=S17.1.]
+Find the integral
+\[
+	\int_{0}^{2\pi} \frac{d\theta}{a + \cos \theta}, \; a > 1
+\]
+\item[id=misc, id=S17,tag=S17.2.]
+The Bernoulli polynomials $B_n(z)$ are defined by the expansion
+\[
+	t \frac{e^{tz} - 1}{e^t -1} = \sum_{n=1}^{\infty} \frac{B_n(z)}{n!} t^{n}
+\]
+Prove that $B_n(z+1) - B_n(z) = nz^{n-1}$.
+\item[id=misc, id=S17,tag=S17.3.]
+Let $f(z)$ be analytic in $S = \{z = x + iy \colon -1 < x < 1\}$ and continuous on $\overline{S}$, the closure of $S$. Suppose that $f(z)$ are real when $\Re z = x = \pm 1$. Prove that $f(z)$ can be extended analytically to the whole plane and that the resulting entire function satisfies $f(z+4) = f(z)$ for all $z \in \mathbb{C}$.
+\item[id=sequence, id=S17,tag=S17.4.]
+Let $f_n : D(0,1) \rightarrow D(0,1) \setminus \{0\}$ be analytic such that $\sum_{n=1}^{\infty} | f_n(0) | < \infty$.
+\begin{enumerate}[label=(\alph*)]\onlyitems
+\item Prove that $\sum_{n=1}^{\infty} | f_n(z) |^3$ converges uniformly on $| z | \le \frac{1}{2}$.
+\item Give an example of $\{f_n\}_{n=1}^{\infty}$ satisfying above conditions but $\sum_{n=1}^{\infty} | f_n(z) |^3$ diverges for any $| z | > 1/2$.
+\end{enumerate}
+\item[id=holomorphic, id=S17,tag=S17.5.]
+Let $f$ be holomorphic in $D = \{z \in \mathbb{C} \colon 2 < | z | < \infty\}$ satisfying
+\[
+ 	\int_{| z | = 3} f(z) dz = 0
+ \] 
+ Prove that there is a holomorphic function $F$ in $D$ such that $F'(z) = f(z)$ on $D$.
+\item[id=conformal, id=S17,tag=S17.6.]
+Find a conformal map which maps $U_1$ onto $U_2$, where
+\[
+	U_1 = \{z = x + iy \in \mathbb{C} \colon y > 0\} \setminus \{z = iy \colon 1 \le y \le 2\} \text{ and } U_2 = D(0,1) \setminus \{0\}
+\]
+\item[id=meromorphic, id=S17,tag=S17.7.]
+Let $f$ be meromorphic in $\mathbb{C}$ satisfying
+\[
+	| f(z) |^3 \le | \tan z |, \qquad z \in \mathbb{C} \setminus P(f)
+\]
+where $P(f)$ is the set of poles of $f$ in $\mathbb{C}$. Prove $f(z) \equiv 0$.
+\item[id=entire, id=S17,tag=S17.8.]
+Prove or disprove there is a non-constant entire function $f = u+ iv$ satisfying $v(z) \ne u(z)^2$ when $u(z) \ge 0$.
+
+%%%%%%%%%%%%%%%% FALL 2017 %%%%%%%%%%%%%%%%%
+\item[id=harmonic, id=F17,tag=F17.1.]
+Let $u$ be a real-valued continuous function on $\mathbb{C}$ such that $e^{u(z)}$ is harmonic in $\mathbb{C}$. Then $u$ is a constant.
+\item[id=entire, id=F17,tag=F17.2.]
+Prove or disprove there is a holomorphic function $f$ on the unit disk $D(0,1)$ such that
+\[
+	f\left(\frac{1}{2n}\right) = f\left(\frac{1}{2n+1}\right) = \frac{1}{n}
+\]
+for all positive integers $n$.
+\item[id=entire, id=F17,tag=F17.3.]
+Let $f$ be an entire holomorphic function in $\mathbb{C}$ such that $f(x)$ and $f(ix)$ are real for $x \in (1,2)$. Prove there is an entire function $g$ such that
+\[
+	f(z) = g(z^2), \quad z \in \mathbb{C}
+\]
+\item[id=cauchy, id=F17,tag=F17.4.]
+Let $z_1,\ldots,z_n \in D(0,R)$ and
+\[
+	Q(z) = (z - z_1)\ldots(z - z_n)
+\]
+Let $f$ be a holomorphic function on $\overline{D(0,R)}$. PRove
+\[
+	P(z) = \frac{1}{2\pi i} \int_{| w | = R} f(w) \frac{Q(w) - Q(z)}{(w - z)Q(w)} dw
+\]
+is a polynomial of degree $n - 1$ such that $f(z_j) = P(z_j)$ for $1 \le j \le n$.
+
+\item[id=zeros, id=F17,tag=F17.5.]
+For $a > 1$ Prove the equation $ze^{a-z} = 1$ has a unique solution in $| z | \le 1$, which is also real and positive.
+\item[id=integral, id=F17,tag=F17.6.]
+Prove
+\[
+	\int_{0}^{\infty} \frac{(\log x)^2}{1 + x^2} dx = \frac{\pi^3}{8}
+\]
+\item[id=normal, id=F17,tag=F17.7.]
+Let $\mathcal{F}$ be a family of holomorphic functions $f$ on the unit disc $D(0,1)$ such that
+\[
+	| f(0) |^2 + \int_{D(0,1)} | f'(z) |^2 dA \le 1
+\]
+Prove that $\mathcal{F}$ is a normal family.
+
+\item[id=sequence, id=F17,tag=F17.8.]
+Let $\{f_n\}_{n=1}^{\infty}$ be a sequence of holomorphic functions on the unit disk $D(0,1)$ such that
+\[
+	F(z) = \sum_{n=1}^{\infty} | f_n(z) |
+\]
+defines a continuous function in $D(0,1)$ and $F(0) \ge F(z)$ on $D(0,1)$. Prove $f_n$ are constant for all $n = 1,2,3,\ldots$
+
+%%%%%%%%%%%%%%%%%%% SPRING 2018 %%%%%%%%%%%%%%%%%%
+
+\item[id=zeros, id=S18,tag=S18.1.]
+Determine the number of roots, counted with multiplicity, of the equation
+\[
+	2z^5 - 15z^2 + z + 2
+\]
+inside the annulus $1 \le | z | \le 2$.
+\item[id=misc, id=S18,tag=S18.2.]
+Let $f$ and $g$ be analytic functions on the open set $U = D(1,15) \setminus \{i\}$, i.e the open disc centered at 1 with radius 15 with the point $i$ removed. Suppose $f'(z) = g'(z)$ for all $z \in U$. Prove that $f$ and $g$ differ by a constant, that is, there exists $a \in \mathbb{C}$ such that $f(z) - g(z) = a$ for all $z \in U$.
+\item[id=conformal, id=S18,tag=S18.3.]
+Let $L \subset \mathbb{C}$ be the ray $\{t + it \mid t \ge 1\}$, and $U = \{\Re z > 0, \Im z > 0\}$. Find an explicit conformal mapping of $U \setminus L$ to the unit disc.
+
+\item[id=zeros, id=misc, id=S18,tag=S18.5.]
+Suppose $p(z)$ is a polynomial of degree $d \ge 2$ that has only simple zeros $r_1,r_2,\ldots, r_d$. Prove that $\frac{1}{p'(r_1)} + \frac{1}{p'(r_2)} + \ldots + \frac{1}{p'(r_d)} = 0$.
+
+\item[id=integral, id=S18,tag=S18.6.]
+Evaluate $\int_{-\infty}^{\infty} \frac{\sin x}{x + i} dx$.
+
+\item[id=misc, id=S18,tag=S18.7.]
+Prove that the range of the function $f(z) = \sum_{n=1}^{2018} \cos^n(z)$ is the whole complex plane $\mathbb{C}$.
+
+\item[id=normal, id=S18,tag=S18.8.]
+Let us say that a holomorphic function $f : \mathbb{D} \rightarrow \mathbb{C}$ on the unit disc $\mathbb{D}$ is ``good'' if for some $n \in \{1,2,\ldots,2018\}$ the function $f$ does not take values on the ray $\{t e^{\frac{2\pi}{n} i} \mid t \ge 0\}$. Prove that the collection of all ``good'' functions is normal.
+
+%%%%%%%%%%%%%%%%%%%% FALL 2018 %%%%%%%%%%%%%%%%
+
+\item[id=singularity, id=F18,tag=F18.1.]
+Let $f$ be an analytic function on $D(z_0, r) \setminus \{z_0\}$, where $r > 0$, such that $f(z) \ne 0$ for all $z \in D(z_0, r) \setminus \{z_0\}$. Consider the analytic function $g(z) = \frac{1}{f(z)}$ for $z \in D(z_0, r) \setminus \{z_0\}$. Prove that $f$ has an essential singularity at $z_0$ if and only if $g$ has an essential singularity at $z_0$.
+\item[id=entire, id=F18,tag=F18.2.]
+Let $f$ and $g$ be entire functions. Suppose that
+\begin{enumerate}[label=(\alph*)]\onlyitems
+\item $g(z) \ne 0$ for all $z \in \mathbb{C}$.
+\item $| f(z) | \le | z^7 g(z) |$ for all $z \in \mathbb{C}$.
+\end{enumerate}
+Prove that there exists $\alpha \in \mathbb{C}$ with $| \alpha | \le 1$ such that $f(z) = \alpha z^7 g(z)$ for all $z \in \mathbb{C}$.
+\item[id=normal, id=F18,tag=F18.3.]
+Let $\{f_n\}$ be a uniformly bounded sequence of analytic functions on the open unit disc $D(0,1)$. Suppose $\lim_{n\rightarrow \infty} f_n(\frac{1}{k})$ exists for $k = 1,2,\ldots$. Prove that there exists an analytic function $f$ on $D(0,1)$ such that $f_n \rightarrow f$ uniformly on compact subsets of $D(0,1)$.
+
+\item[id=zeros, id=F18,tag=F18.4.]
+Find the number of solutions with multiplicity of $e^z = 7z^9$ in the open unit disc around the origin.
+
+\item[id=integral, id=F18,tag=F18.5.]
+Evaluate
+\[
+	\int_{\gamma} \frac{1+z}{1 - \cos(z)} dz, \text{ where }
+\]
+\begin{enumerate}[label=(\alph*)]\onlyitems
+\item $\gamma$ is the circle of radius 5 around 0, counterclockwise.
+\item $\gamma$ is the circle of radius 7 around 0, counterclockwise.
+\end{enumerate}
+
+\item[id=conformal, id=F18,tag=F18.6.]
+Find a surjective holomorphic map $\varphi$ from the open unit disc $D = D(0,1)$ to the punctured disc $D^* = D \setminus \{0\}$, with $\varphi'(z) \ne 0$ for any $z \in D$. 
+\item[id=cauchy, id=F18,tag=F18.7.]
+Let $f : \{z \mid | z | > 0\} \rightarrow \mathbb{C}$ be analytic. Furthermore suppose that $\lim_{z\rightarrow \infty} f(z) = 0$. Show that for $| z | > 1$, one has
+\[
+	\frac{1}{2\pi i} \int_{\nu = 1} \frac{f(\nu)}{\nu - z} = - f(z)
+\]
+\item[id=bound, id=F18,tag=F18.8.]
+Suppose $f : D(0,1) \rightarrow D(0,1)$ is a holomorphic mapping such that $f(0) = \frac{1}{5}$. Give an upper bound for $| f'(0) |$, and characterize the functions for which the upper bound is an equality.
+
+
+%%%%%%%%%%%%%%%% SPRING 2019 %%%%%%%%%%%%%%%%
+
+\item[id=singularity, id=S19,tag=S19.1.]
+Let $f(z)$ be analytic in the region $0 < | z | < 1$, which satisfies $\Re f(z) < 2$. Show that $z = 0$ is a removable singularity of $f$.
+\item[id=harmonic, id=S19,tag=S19.2.]
+Let $u : \mathbb{C} \rightarrow \mathbb{R}$ be a nonconstant real harmonic function. Show that there exists a sequence of points $\{z_n\} \in \mathbb{C}$ such that $\lim_{n\rightarrow \infty} u(z_n) = -\infty.$
+\item[id=bound, id=S19,tag=S19.3.]
+\begin{enumerate}[label=(\alph*)]\onlyitems
+\item State the Schwarz-Pick Lemma.
+\item Suppose $f : D(0,1) \rightarrow D(0,1)$ is a holomorphic mapping such that $f(0) = \frac{1}{6}.$ Give an upper bound for $| f'(0) |$, and characterize the functions for which the upper bound is an equality.
+\end{enumerate}
+\item[id=singularity, id=holomorphic, id=S19,tag=S19.4.]
+Let
+\[
+	f(z) = \frac{z^3}{(z^2 + 1)e^{1/z}}
+\]
+\begin{enumerate}[label=(\alph*)]\onlyitems
+\item Find and classify all the singularities of $f(z)$ in the extended complex plane.
+\item Evaluate
+\[
+	\oint_{\Gamma} f(z) dz,
+\]
+where $\Gamma = \{z \in \mathbb{C} \mid | \Re z | + | \Im z | = 3\}$.
+\item Does there exist a holomorphic function $F$ on $| z | > 3$ such that $F'(z) = f(z)$ on $| z | > 3$? (Justify your answer.)
+\end{enumerate}
+
+\item[id=series, id=S19,tag=S19.5.]
+Assume that the power series
+\[
+	f(z) = \sum_{j=0}^{\infty} a_j z^j
+\]
+defines a holomorphic function for $| z | < 1$ and assume that
+\[
+	| a_1 | > \sum_{j=2}^{\infty} j | a_j |
+\]
+Show that the function $f(z)$ is one-to-one in the open unit disk $D(0,1)$.
+\item[id=bound, id=S19,tag=S19.6.]
+Let $f(z) = \sum_{j=0}^{\infty} a_j z^j$ denote an entire function satisfying the estimate
+\[
+	| f(z) | \le 10 e^{| z |}, \quad \text{ for all } z \in \mathbb{C}
+\]
+Prove that the coefficients $a_j$ satisfy
+\[
+	| a_j | \le 10(e/j)^j, \quad \text{ for all } j \in \mathbb{N}
+\]
+\item[id=conformal, id=S19,tag=S19.7.]
+Construct a conformal map $\phi$ which maps $D_1$ onto $D_2$, where
+\[
+	D_1 = \{z \in \mathbb{C} \colon 0 < \Re z < 2\} \text{ and } D_2 = \{z \in \mathbb{C} \colon | z | > 1\}/
+\]
+
+\item[id=harmonic, id=S19,tag=S19.8.]
+Let $u$ be harmonic in $D(0,1) \setminus \{0\}$ satisfying
+\[
+	\lim_{z\rightarrow 0} \frac{u(z)}{\ln | z |} = 0
+\]
+Prove that $u$ is harmonic on $D(0,1)$.
+
+%%%%%%%%%%%%%%%%%% fALL 2019 %%%%%%%%%%%%%%%%%
+
+\item[id=holomorphic, id=F19,tag=F19.1.]
+Complete the following parts.
+\begin{enumerate}[label=(\alph*)]\onlyitems
+\item Find all points where the function $f(z) = \overline{z}^2 + 3 \overline{z}$ is analytic.
+\item Let $D$ be a domain in $\mathbb{C}$ and let $f$ be $C^1$ function on $D$ such that
+\[
+	\int_{\partial D(z_0, r)} f(z) dz = 0,
+\]
+for any $z_0 \in D$ and $0 < r < \delta(z_0) = \text{dist}(z_0, \delta D)$. Prove $f$ is holomorphic in $D$.
+\end{enumerate}
+
+\item[id=zeros, id=F19,tag=F19.2.]
+Let $f : D(0,1) \rightarrow D(0,1)$ be holomorphic such that $f(0) = 5^{-20}$. Give a sharp estimate for the number of zeros of $f$ on $\overline{D(0,\frac{1}{5})}$.
+
+\item[id=series, id=F19,tag=F19.3.]
+Given a series
+\[
+	\sum_{n=1}^{\infty} \left(\frac{2019 + i}{2019 - i}\right)^{n^2} \cdot \left(\frac{z - 2019}{z + 2019}\right)^n
+\]
+\begin{enumerate}[label=(\roman*)]\onlyitems
+\item Find all complex numbers $z$ such that the series converges absolutely;
+\item Find all complex numbers $z$ such that the series convergence.
+\end{enumerate}
+
+\item[id=integral, id=F19,tag=F19.4.]
+Prove that
+\[
+	\int_{0}^{\infty} \frac{(\log x)^2}{1 + x^2} = \frac{\pi^3}{8}
+\]
+
+\item[id=sequence, id=F19,tag=F19.5.]
+Prove or disprove: there exist a sequence of holomorphic functions $\{f_n\}_{n=1}^{\infty}$ on $D(0,1)$ such that $f_n(z) \rightarrow | z |^2$ uniformly on a non-empty open subset of $D(0,1)$.
+
+\item[id=entire, id=F19,tag=F19.6.]
+Suppose that $f$ is a non-constant entire function which satisfying
+\[
+	| f(z) | \ge 1 \quad \text{ when } \quad | z | \ge 10
+\]
+Prove that $f$ is a polynomial.
+
+\item[id=misc, id=F19,tag=F19.7.]
+Let $f : D(0,1) \rightarrow D(0,1)$ be a proper holomorphic map such that $f(z)$ is continuous on $\overline{D(0,1)}$. Prove $f$ is a rational function.
+
+
+\item[id=series, id=F19,tag=F19.8.]
+\begin{enumerate}[label=(\alph*)]\onlyitems
+\item Prove
+\[
+	f(z) = \sum_{k=-\infty}^{\infty} \frac{1}{(k+z)^2} - \frac{p^2}{\sin^2(\pi z)}
+\]
+is entire holomorphic.
+\item Prove
+\[
+	\sum_{k=-\infty}^{\infty} \frac{1}{(k+z)^2} = \frac{\pi^2}{\sin^2(\pi z)}, \; z \notin \mathbb{Z}
+\]
+\end{enumerate}
+
+}
+% section START
+\tableofcontents
+\newpage
+\section{Misc}
+\begin{itemize}\setlength\itemsep{4em}\onlyitems[none, include=misc]
+\mylist
+\end{itemize}
+\newpage
+
+\section{Integral}
+\begin{itemize}\setlength\itemsep{4em}\onlyitems[none, include=integral]
+\mylist
+\end{itemize}
+\newpage
+
+\section{Sequence}
+\begin{itemize}\setlength\itemsep{4em}\onlyitems[none, include=sequence]
+\mylist
+\end{itemize}
+\newpage
+
+\section{Entire}
+\begin{itemize}\setlength\itemsep{4em}\onlyitems[none, include=entire]
+\mylist
+\end{itemize}
+\newpage
+
+\section{Meromorphic}
+\begin{itemize}\setlength\itemsep{4em}\onlyitems[none, include=meromorphic]
+\mylist
+\end{itemize}
+\newpage
+
+\section{Bound}
+\begin{itemize}\setlength\itemsep{4em}\onlyitems[none, include=bound]
+\mylist
+\end{itemize}
+\newpage
+
+\section{Zeros}
+\begin{itemize}\setlength\itemsep{4em}\onlyitems[none, include=zeros]
+\mylist
+\end{itemize}
+\newpage
+
+\section{Normal}
+\begin{itemize}\setlength\itemsep{4em}\onlyitems[none, include=normal]
+\mylist
+\end{itemize}
+\newpage
+
+\section{Series}
+\begin{itemize}\setlength\itemsep{4em}\onlyitems[none, include=series]
+\mylist
+\end{itemize}
+\newpage
+
+\section{Automorphism}
+\begin{itemize}\setlength\itemsep{4em}\onlyitems[none, include=automorphism]
+\mylist
+\end{itemize}
+\newpage
+
+\section{Conformal}
+\begin{itemize}\setlength\itemsep{4em}\onlyitems[none, include=conformal]
+\mylist
+\end{itemize}
+\newpage
+
+\section{Holomorphic}
+\begin{itemize}\setlength\itemsep{4em}\onlyitems[none, include=holomorphic]
+\mylist
+\end{itemize}
+\newpage
+
+\section{Product}
+\begin{itemize}\setlength\itemsep{4em}\onlyitems[none, include=product]
+\mylist
+\end{itemize}
+\newpage
+
+\section{Harmonic}
+\begin{itemize}\setlength\itemsep{4em}\onlyitems[none, include=harmonic]
+\mylist
+\end{itemize}
+\newpage
+
+\section{Singularity}
+\begin{itemize}\setlength\itemsep{4em}\onlyitems[none, include=singularity]
+\mylist
+\end{itemize}
+\newpage
+
+\section{Subharmonic}
+\begin{itemize}\setlength\itemsep{4em}\onlyitems[none, include=subharmonic]
+\mylist
+\end{itemize}
+\newpage
+
+\section{Cauchy}
+\begin{itemize}\setlength\itemsep{4em}\onlyitems[none, include=cauchy]
+\mylist
+\end{itemize}
+\newpage
+
+
+\end{document}
