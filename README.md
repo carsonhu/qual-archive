@@ -34,7 +34,7 @@ To edit a problem's ID, search it up in COMPLEX_QUALIFYING_EXAM_ARCHIVE.tex and 
 
 # Usage
 
-Requires python 3.6. Built in MiKTeX. Ideally, you run
+Requires python 3.6. Built in MiKTeX. Ideally, you open up command line and run
 ```
 python archive_creator.py
 ```
