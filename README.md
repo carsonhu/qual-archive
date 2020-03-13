@@ -30,7 +30,11 @@ Currently, the list of IDs is:
 15. **Subharmonic** - Problems involving subharmonic functions.
 16. **Cauchy** - Problems that look suspiciously similar to the Cauchy integral formula (should probably be removed)
 
-To edit a problem's ID, search it up in COMPLEX_QUALIFYING_EXAM_ARCHIVE.tex and modify the problem's ID.
+# Modifying the Archive
+
+archive_creator.py generates the output tex file (complex_archive.tex) based off of the data from COMPLEX_QUALIFYING_EXAM_ARCHIVE.tex. 
+
+To edit a problem's IDs or tag, search it up in COMPLEX_QUALIFYING_EXAM_ARCHIVE.tex and modify the problem's ID's or tag. Then run archive_creator.py to update the PDF.
 
 # Usage
 
